@@ -4,6 +4,7 @@ import Cookies from "universal-cookie";
 // import { ChannelSearch, TeamChannelList, TeamChannelPreview } from "./";
 import HospitalIcon from "../assets/hospital.png";
 import LogoutIcon from "../assets/logout.png";
+import ChannelSearch from "./ChannelSearch";
 
 const Sidebar = () => (
   <div className="channel-list__sidebar">
@@ -20,10 +21,20 @@ const Sidebar = () => (
   </div>
 );
 
+const CompanyHeader = () => (
+  <div className="channel-list__header">
+    <p className="channel-list__header__text">Chat App</p>
+  </div>
+);
+
 const ChannelListContainer = () => {
   return (
     <>
       <Sidebar />
+      <div className="channel-list__list__wrapper">
+        <CompanyHeader />
+        <ChannelSearch />
+      </div>
     </>
   );
 };
