@@ -4,10 +4,28 @@ import axios from "axios";
 
 import signinImage from "../assets/signup.jpg";
 
+const initialState = {
+  fullName: "",
+  username: "",
+  password: "",
+  confirmPassword: "",
+  phoneNumber: "",
+  avatarURL: "",
+};
+
 const Auth = () => {
   const [isSignup, setIsSignup] = useState(true);
+  const [form, setForm] = useState();
 
-  const handleChange = () => {};
+  const handleChange = (e) => {
+    // spread in the form values, then change name to value to value of input
+    setForm({ ...form, [e.target.name]: e.target.value });
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    console.log(form);
+  };
 
   const switchMode = () => {
     setIsSignup((prevIsSignup) => !prevIsSignup);
@@ -18,7 +36,7 @@ const Auth = () => {
       <div className="auth__form-container_fields">
         <div className="auth__form-container_fields-content">
           <p>{isSignup ? "Sign Up" : "Sign In"}</p>
-          <form action="" onSubmit={() => {}}>
+          <form action="" onSubmit={handleSubmit}>
             {isSignup && (
               <div className="auth__form-container_fields-content_input">
                 <label htmlFor="fullName">Full Name</label>
@@ -87,6 +105,9 @@ const Auth = () => {
                 />
               </div>
             )}
+            <div className="auth__form-container_fields-content_button">
+              <button>{isSignup ? "Sign Up" : "Sign In"}</button>
+            </div>
           </form>
           <div className="aut_form-container_fields-account">
             <p>
@@ -102,6 +123,9 @@ const Auth = () => {
             </p>
           </div>
         </div>
+      </div>
+      <div className="auth__form-container_image">
+        <img src={signinImage} alt="signin" />
       </div>
     </div>
   );
