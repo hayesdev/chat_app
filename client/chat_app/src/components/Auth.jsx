@@ -18,7 +18,7 @@ const Auth = () => {
   const [form, setForm] = useState();
 
   const handleChange = (e) => {
-    // spread in the form values, then change name to value to value of input
+    // spread in form values and change name to value of input
     setForm({ ...form, [e.target.name]: e.target.value });
   };
 
